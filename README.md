@@ -21,6 +21,14 @@ Doing this involves calculating probabilities over a potentially large text, usi
 
 We have given some code scaffolding in the package `collocations`, which you should edit. You may change anything there as you please *except that* there needs to be a function named `collocations()` that takes as its sole argument an instance of `nltk.Text` and that prints output to `sys.stdout`, apart from the output nothing else should be printed - do not leave `print` statements from your debugging effort.
 
+You can run your code from the `collocations` directory as follows:
+
+```
+$ python3 __init__.py
+```
+
+Remember that `__init__.py` is just a regular python file, like any other `.py` file. It is only special in the sense that it is loaded automatically when the `collocations` package is imported.
+
 More instructions are in `collocations/__init__.py`.
 
 
@@ -46,10 +54,10 @@ In addition, generate some statistics for tagged data to answer the following qu
 
 2. What proportion of word tokens are always assigned the same part-of-speech tag?
 
-Do this by adding code to `postog/brown.py`. Use the code scaffolding as given and do not change the name of methods or the kinds of arguments handed in.  When we look at your code, we will expect that we can import `BrownCorpus` class directly from `postag` package and do the following outside the package.
+Do this by adding code to `postag/brown.py`. Use the code scaffolding as given and do not change the name of methods or the kinds of arguments handed in.  When we look at your code, we will expect that we can import `BrownCorpus` class directly from `postag` package and do the following outside the package.
 
 ```
-from postag import BrownCorpus
+from postag.brown import BrownCorpus
 
 bc = BrownCorpus()
 bc.nouns_more_common_in_plural_form()
@@ -60,26 +68,26 @@ bc.proportion_ambiguous_word_types()
 bc.proportion_ambiguous_word_tokes()
 ```
 
-The `postag/__init__.py` given in the starter code is empty, thus the package will not work as above. Your last job in this part would be editing the `__init__.py` so that the package works as expected. 
-You may add as many methods, functions and classes as you see fit. You may use any standard module or any method or class from nltk. You do not need to write doc tests or unit tests, but adding good tests can earn you some extra credit. 
+You may add as many methods, functions and classes as you see fit. You may use any standard module or any method or class from nltk. You do not need to write doc tests or unit tests, but adding good tests can earn you some extra credit.
 
-#### Traning and Evaluting Taggers
+#### Training and Evaluating Taggers
 
-The last part of this assignment is to write your own tagger. This sounds much harder than it is because the nltk module gives you almost everything you need. You should train this tagger on the news category of the Brown Corpus. Create the tagger in `postag/tagger.py`. Your tagger script should be able to do:
+The last part of this assignment is to write your own tagger. This sounds much harder than it is because the nltk module gives you almost everything you need. You should train this tagger on the news category of the Brown Corpus. Create the tagger in `postag/tagger.py`. Your tagger script should be able to:
 
-1. Train a POS tagging model on "news" portion of the Brown corpus and pickle the model. 
-1. Run on a sentence and printing the result to standard output (`sys.stdout`)
+1. Train a POS tagging model on the "news" portion of the Brown corpus and pickle the model.
+1. Run on a sentence and print the result to standard output (`sys.stdout`)
 1. Print how well this tagger evaluates on sentences from the Brown "news" category
 1. Print how well this tagger evaluates on sentences from the Brown "reviews" category
 
-For pickling, you inevitably need to hard-code the path of the pickle jar and re-use the path in test/evaluate functions. 
+For pickling, you inevitably need to hard-code the path of the pickle jar and re-use the path in test/evaluate functions, but make sure the path is a relative path.
+
 We provide `run.py`, a command-line interface that wraps around the `tagger.py`. Read the file to figure out what functions (APIs) are required in `tagger.py`
 
-When you look at your code, we would expect
+When we you look at your code, we would expect
 
 ```
 $ python run.py --train
-$ python run.py -t "Computational linguistics is fun." -n -r 
+$ python run.py -t "Computational linguistics is fun." -n -r
 ```
 
-gives us the three test/evaluation points above demonstrated.
+to give us the three test/evaluation points above demonstrated.
