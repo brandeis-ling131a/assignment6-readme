@@ -54,7 +54,7 @@ In addition, generate some statistics for tagged data to answer the following qu
 
 2. What proportion of word tokens are always assigned the same part-of-speech tag?
 
-Do this by adding code to `postag/brown.py`. Use the code scaffolding as given and do not change the name of methods or the kinds of arguments handed in.  When we look at your code, we will expect that we can import `BrownCorpus` class directly from `postag` package and do the following outside the package.
+Do this by adding code to `postag/brown.py`. Use the code scaffolding as given and do not change the name of methods or the kinds of arguments handed in.  When we look at your code, we will expect that we can import the `BrownCorpus` class directly from the `postag` package and do the following outside the package.
 
 ```
 from postag.brown import BrownCorpus
